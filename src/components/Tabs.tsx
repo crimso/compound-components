@@ -24,7 +24,7 @@ type TabsProps = {
   children: ReactNode;
 };
 
-function Tabs({ defaultValue, children }: TabsProps) {
+function TabsRoot({ defaultValue, children }: TabsProps) {
   const [activeValue, setActiveValue] = useState(defaultValue);
 
   return (
@@ -87,8 +87,16 @@ function TabsContent({ value, children }: TabsContentProps) {
   return <div>{children}</div>;
 }
 
+const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+});
+
+/*
 Tabs.List = TabsList;
 Tabs.Trigger = TabsTrigger;
 Tabs.Content = TabsContent;
+*/
 
 export default Tabs;
