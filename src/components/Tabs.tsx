@@ -38,7 +38,7 @@ type TabsListProps = {
   children: ReactNode;
 };
 
-export function TabsList({ children }: TabsListProps) {
+function TabsList({ children }: TabsListProps) {
   return (
     <div role="tablist" style={{ display: "flex", gap: "5px" }}>
       {children}
@@ -51,7 +51,7 @@ type TabsTriggerProps = {
   children: ReactNode;
 };
 
-export function TabsTrigger({ value, children }: TabsTriggerProps) {
+function TabsTrigger({ value, children }: TabsTriggerProps) {
   const { activeValue, setActiveValue } = useTabsContext();
 
   const isActive = activeValue === value;
@@ -77,7 +77,7 @@ type TabsContentProps = {
   children: ReactNode;
 };
 
-export function TabsContent({ value, children }: TabsContentProps) {
+function TabsContent({ value, children }: TabsContentProps) {
   const { activeValue } = useTabsContext();
 
   if (activeValue !== value) {
@@ -86,5 +86,9 @@ export function TabsContent({ value, children }: TabsContentProps) {
 
   return <div>{children}</div>;
 }
+
+Tabs.List = TabsList;
+Tabs.Trigger = TabsTrigger;
+Tabs.Content = TabsContent;
 
 export default Tabs;
